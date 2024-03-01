@@ -1,0 +1,18 @@
+<!-- <button>
+    <NuxtLink
+      :to="inEditor ? '' : url"
+      :class="classes"
+      v-editable="button"
+      class="block h-full w-full"
+    >
+      {{ button.label }}
+      <slot />
+    </NuxtLink>
+  </button> -->
+
+  <div class="button" [appStoryblok]="_editable">
+    <!-- <div *ngFor="let blok of columns"> -->
+      <!-- <ndc-dynamic *ngIf="components" [ndcDynamicComponent]="components[blok.component]" [ndcDynamicInputs]="blok"> -->
+      <!-- </ndc-dynamic> -->
+    <!-- </div> -->
+  </div>

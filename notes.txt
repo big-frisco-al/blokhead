@@ -1,0 +1,2 @@
+npx storyblok pull-components --separate-files --space 1019108
+alias ng='npx @angular/cli@17.2'
