@@ -8,8 +8,8 @@ import { provideHttpClient } from '@angular/common/http';
 export const appConfig: ApplicationConfig = {
   providers: [
     // provideRouter(routes),
-    // provideClientHydration(withHttpTransferCacheOptions({
-    //   "includePostRequests": true
-    // })), 
+    provideClientHydration(withHttpTransferCacheOptions({
+      "includePostRequests": true
+    })), 
     provideHttpClient()]
 };
