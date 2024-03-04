@@ -1,0 +1,36 @@
+
+<div
+class="flex h-full w-full max-w-md flex-col rounded-lg p-6 lg:max-w-none"
+[ngClass]="background_color?.value ? '' : default_color"
+[style]="
+  background_color?.value
+    ? 'background-color: ' + background_color.value
+    : ''
+"
+[appStoryblok]="_editable"
+>
+<img
+  *ngIf="icon.filename"
+  [src]="optimizedIcon()"
+  [alt]="icon.alt"
+  [width]="icon_width"
+  class="pointer-events-none mx-auto mb-6"
+/>
+<div class="flex grow flex-col">
+  <div class="grow" :class="textColor">
+    <h3 class="mb-3 font-display text-xl font-medium">
+      {{ label }}
+    </h3>
+    <div class="font-light leading-relaxed">{{ text }}</div>
+  </div>
+
+  <div *ngIf="button.length" class="mt-8">
+    <div>
+    @for(b of button; track b) {
+     <button 
+     type="button">{{ doit(b) }}</button>
+    }
+    </div>
+  </div>
+</div>
+</div>

@@ -6,6 +6,7 @@ import { ImageTextSectionComponent } from './components/image-text-section/image
 import { ButtonComponent } from './components/button/button.component';
 import { LabelComponent } from './components/label/label.component';
 import { TimerComponent } from './components/timer/timer.component';
+import { GridCardComponent } from './components/grid-card/grid-card.component';
  
 let Components = {
   'page': PageComponent,
@@ -15,7 +16,8 @@ let Components = {
   "image-text-section": ImageTextSectionComponent,
   'button': ButtonComponent,
   'lable': LabelComponent,
-  "timer": TimerComponent
+  "timer": TimerComponent,
+  "grid-card": GridCardComponent
 }
  
 export { Components }

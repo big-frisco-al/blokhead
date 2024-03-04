@@ -4,28 +4,30 @@ import { DynamicModule } from 'ng-dynamic-component';
 import { StoryblokDirective } from 'src/app/directives/storyblok.directive';
 import { StoryblokService } from 'src/app/services/storyblok.service';
 import cloneDeep from "clone-deep";
-import { RichTextSchema, apiPlugin, renderRichText, storyblokInit } from '@storyblok/js';
+import { RichTextResolver, RichTextSchema, apiPlugin, renderRichText, storyblokInit } from '@storyblok/js';
 
-const mySchema = cloneDeep(RichTextSchema); 
+const resolver = new RichTextResolver();
+// const mySchema = cloneDeep(RichTextSchema); 
 
-storyblokInit({
-  accessToken: "N89EDxkT6ayVPz1DEZujzwtt",
-  use: [apiPlugin],
-  apiOptions: {
-    region: "us",
-  },
-  richText: {
-    schema: mySchema,
-    resolver: (component, blok) => {
-      switch (component) {
-        case "my-custom-component":
-          return `<div class="my-component-class">${blok.text}</div>`;
-        default:
-          return "Resolver not defined";
-      }
-    },
-  },
-});
+// storyblokInit({
+//   accessToken: "N89EDxkT6ayVPz1DEZujzwtt",
+//   use: [apiPlugin],
+//   apiOptions: {
+//     region: "us",
+//   },
+//   richText: {
+//     schema: mySchema,
+//     resolver: (component, blok) => {
+//       switch (component) {
+//         case "my-custom-component":
+//           return `<div class="my-component-class">${blok.text}</div>`;
+//         default:
+//           return "Resolver not defined";
+//       }
+//     },
+//   },
+// });
+
 
 @Component({
   selector: 'app-image-text-section',
@@ -46,7 +48,6 @@ export class ImageTextSectionComponent implements OnInit {
       this.components = cp.Components;
     });
   }
-
  
   ngOnInit() {
     this.optimizedImage = this.getOptimizedImage(this.image, 1000)
@@ -75,8 +76,8 @@ export class ImageTextSectionComponent implements OnInit {
     return imageSource
   }
 
-  doit() {
-    return this.button[0].label;
+  doit(button: any) {
+    return button.label;
   }
   
   fixedHeightImages()  {
@@ -94,7 +95,23 @@ export class ImageTextSectionComponent implements OnInit {
   }
 
   renderxRichText(richTextField) {
+    // console.log(richTextField)
+// return renderRichTextrichTextField;
+    // return renderRichText(richTextField, {
+    //   schema: mySchema,
+    //   resolver: (component, richTextField) => {
+    //     console.log(component);
+    //     console.log(richTextField);
+    //     switch (component) {
+    //       case "my-custom-component":
+    //         return `<div class="my-component-class">${richTextField.text}</div>`;
+    //         break;
+    //       default:
+    //         return `Component ${component} not found`;
+    //     }
+    //   },
+    // });
     return renderRichText(richTextField);
+  // }
   }
- 
 }

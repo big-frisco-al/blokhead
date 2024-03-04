@@ -14,12 +14,13 @@
         <div *ngIf="headline" size=small class="mb-2;">
           {{ headline }}
         </div>
-        <div  [innerHTML]="renderxRichText(text)" class="prose prose-lg"></div>
+        <div [innerHTML]="renderxRichText(text)" class="prose prose-lg"></div>
+
         <div *ngIf="button.length" class="mt-8">
           <div>
           @for(b of button; track b) {
            <button 
-           type="button">{{ doit() }}</button>
+           type="button">{{ doit(b) }}</button>
           }
           </div>
         </div>

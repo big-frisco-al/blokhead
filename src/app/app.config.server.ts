@@ -15,24 +15,24 @@ const serverConfig: ApplicationConfig = {
   ]
 };
 
-const mySchema = cloneDeep(RichTextSchema);
+// const mySchema = cloneDeep(RichTextSchema);
 const { storyblokApi } = storyblokInit({
   accessToken: "N89EDxkT6ayVPz1DEZujzwtt",
   use: [apiPlugin],
   apiOptions: {
     region: "us",
   },
-  richText: {
-    schema: mySchema,
-    resolver: (component, blok) => {
-      switch (component) {
-        case "my-custom-component":
-          return `<div class="my-component-class">${blok.text}</div>`;
-        default:
-          return "Resolver not defined";
-      }
-    },
-  },
+  // richText: {
+  //   schema: mySchema,
+  //   resolver: (component, blok) => {
+  //     switch (component) {
+  //       case "my-custom-component":
+  //         return `<div class="my-component-class">${blok.text}</div>`;
+  //       default:
+  //         return "Resolver not defined";
+  //     }
+  //   },
+  // },
 });
 
 export const config = mergeApplicationConfig(appConfig, serverConfig);
