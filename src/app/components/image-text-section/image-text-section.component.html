@@ -2,48 +2,52 @@
   <section
     [appStoryblok]="_editable"
     class="page-section image-text-section"
-    :class="'bg-' + blok.background_color"
+    [ngClass]="'bg-' + background_color"
   >
     <div
       class="container grid items-center gap-6 sm:gap-10 md:gap-12 lg:grid-cols-2"
     >
       <div
         class="order-last text-left"
-        :class="blok.reverse_layout ? '' : 'lg:order-first'"
+        [ngClass]="reverse_layout ? '' : 'lg:order-first'"
       >
         <div *ngIf="headline" size=small class="mb-2;">
           {{ headline }}
         </div>
         <div  [innerHTML]="renderxRichText(text)" class="prose prose-lg"></div>
         <div *ngIf="button.length" class="mt-8">
-          <div @for(b of button; track button.text)></div>
-          <button {{button.text}}></button>
+          <div>
+          @for(b of button; track b) {
+           <button 
+           type="button">{{ doit() }}</button>
+          }
+          </div>
         </div>
       </div>
       <div>
         <div *ngIf="image.filename">
           <img
           *ngIf="!fixedHeightImages()"
-            :src="{{optimizedImage}}"
-            :alt="image.alt"
+            [src]="optimizedImage"
+            [alt]="image.alt"
             class="pointer-events-none rounded-lg shadow-2xl"
           />
           <img
           *ngIf="fixedHeightImages()"
-            :src="fixedHeightImages().mobile"
-            :alt="image.alt"
+            [src]="fixedHeightImages()['mobile']"
+            [alt] ="image.alt"
             class="pointer-events-none rounded-lg shadow-2xl md:invisible md:hidden"
           />
           <img
           *ngIf="fixedHeightImages()"
-            :src="fixedHeightImages().tablet"
-            :alt="image.alt"
+            [src]="fixedHeightImages()['tablet']"
+            [alt]="image.alt"
             class="pointer-events-none invisible hidden rounded-lg shadow-2xl md:visible md:block lg:invisible lg:hidden"
           />
           <img
             *ngIf="fixedHeightImages()"
-            :src="fixedHeightImages().desktop"
-            :alt="image.alt"
+            [src]="fixedHeightImages()['desktop']"
+            [alt]="image.alt"
             class="pointer-events-none invisible hidden rounded-lg shadow-2xl lg:visible lg:block"
           />
         </div>

@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    // if (isPlatformBrowser(this.platformId) && location.pathname)
+    if (isPlatformBrowser(this.platformId) && location.pathname)
         this.storyblokService.getStory(this.storyName, { version: 'draft' })
           .then(data => this.story = data.story);
     // else

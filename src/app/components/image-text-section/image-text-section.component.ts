@@ -55,7 +55,7 @@ export class ImageTextSectionComponent implements OnInit {
   @Input() headline: any;
   @Input() text: any;
   @Input() image_layout: any;
-  @Input() button: any;
+  @Input() button: any[];
   @Input() image: any;
   @Input() reverse_layout: any;
   @Input() background_color: any;
@@ -75,6 +75,10 @@ export class ImageTextSectionComponent implements OnInit {
     return imageSource
   }
 
+  doit() {
+    return this.button[0].label;
+  }
+  
   fixedHeightImages()  {
     if (this.image_layout !== 'fixed-height') return false
     return {
