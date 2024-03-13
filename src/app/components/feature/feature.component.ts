@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { SbBlokData } from '@storyblok/js';
 import { StoryblokDirective } from 'src/app/directives/storyblok.directive';
  
 @Component({
@@ -16,7 +17,7 @@ export class FeatureComponent implements OnInit {
   }
   
   @Input() name: string;
-  @Input() _editable: string;
+  @Input() _editable: any;
   @Input() _uid: any;
   @Input() component: any;
 }

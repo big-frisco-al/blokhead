@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { SbBlokData } from '@storyblok/js';
 import { DynamicModule } from 'ng-dynamic-component';
 import { StoryblokDirective } from 'src/app/directives/storyblok.directive';
 import { StoryblokService } from 'src/app/services/storyblok.service';
@@ -38,9 +39,10 @@ export class GridCardComponent  implements OnInit {
   @Input() _editable: any;
   @Input() _uid: any;
   @Input() component: any;
+  @Input() metatags: any;
 
   optimizedIcon() {
-    console.log(this.icon);
+    // console.log(this.icon);
     const isSvg = this.icon?.filename.slice(-3) === 'svg';
     const optimize = isSvg ? '' : '/m/' + this.icon_width + 'x0';
     return this.icon.filename + optimize;

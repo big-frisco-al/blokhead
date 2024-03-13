@@ -24,6 +24,7 @@ export class PageComponent implements OnInit {
   @Input() _editable: any;
   @Input() _uid: any;
   @Input() component: any;
+  @Input() metatags: any;
   ngOnInit() {
   }
 

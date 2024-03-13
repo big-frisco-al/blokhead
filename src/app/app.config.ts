@@ -6,13 +6,15 @@ import { provideClientHydration, withHttpTransferCacheOptions } from '@angular/p
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { RichTextSchema, apiPlugin, storyblokInit } from '@storyblok/js';
 import cloneDeep from "clone-deep";
+import { environment } from 'src/environments/environment';
 
 const mySchema = cloneDeep(RichTextSchema);
 const { storyblokApi } = storyblokInit({
-  accessToken: "N89EDxkT6ayVPz1DEZujzwtt",
+  accessToken:  environment.access_token,
+  // bridge: true,
   use: [apiPlugin],
   apiOptions: {
-    region: "us",
+    region: 'us',
   },
   richText: {
     schema: mySchema,

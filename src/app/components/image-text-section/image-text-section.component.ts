@@ -10,7 +10,7 @@ const resolver = new RichTextResolver();
 // const mySchema = cloneDeep(RichTextSchema); 
 
 // storyblokInit({
-//   accessToken: "N89EDxkT6ayVPz1DEZujzwtt",
+//   accessToken:  environment.access_token,
 //   use: [apiPlugin],
 //   apiOptions: {
 //     region: "us",
@@ -63,6 +63,9 @@ export class ImageTextSectionComponent implements OnInit {
   // @Input() body: any[];
   @Input() _editable: any;
   @Input() _uid: any;
+  @Input() id: any;
+  @Input() name: any;
+  @Input() space: any;
   @Input() component: any;
 
   getOptimizedImage(image, width = 1200, height = 0) {

@@ -77,14 +77,15 @@ export class AppComponent implements OnInit {
         location.reload()
       })
         sbBridge.on(["customEvent", "published", "input", "change", "unpublished", "enterEditmode"], (event) => {
-          // console.log(event.action + ":" + JSON.stringify(event))
+          console.log(event.action + ":" + JSON.stringify(event))
         })
       
         sbBridge.on(["input", "published", "change"], (event) => {
             if (this.story && event.story.content._uid === this.story.content._uid) {
-              console.log(event.story.content)
               this.story = event.story
-
+              window.storyblok.init();
+              let updatedStoryContent = window.storyblok.addComments(this.story.content, this.story.id)
+              console.log(updatedStoryContent)
               // location.reload()
               
             }

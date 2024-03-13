@@ -1,0 +1,35 @@
+import { Component, OnInit, afterNextRender } from '@angular/core';
+import { StoryblokService } from './services/storyblok.service';
+import { Components } from './components';
+import { StoryblokDirective } from './directives/storyblok.directive';
+import { DynamicComponent, DynamicModule } from 'ng-dynamic-component';
+import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+ 
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [StoryblokDirective, CommonModule, DynamicModule, RouterOutlet, RouterLink, RouterLinkActive],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+  story = {content: null, name: ''};
+  components = Components;
+ 
+  constructor(private storyblokService: StoryblokService) {
+    afterNextRender(() => {
+      // Safe to check `scrollHeight` because this will only run in the browser, not the server.
+      window.storyblok.init();
+      window.storyblok.on(['change', 'published'],  function() {
+        location.reload()
+      });
+    });
+
+  }
+ 
+  ngOnInit() {
+    this.storyblokService.getStory('home', {version: 'draft'})
+      .then(data => this.story = data.story);
+  }
+}

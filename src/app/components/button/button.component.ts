@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { SbBlokData } from '@storyblok/js';
 import { DynamicModule } from 'ng-dynamic-component';
 import { StoryblokDirective } from 'src/app/directives/storyblok.directive';
 import { StoryblokService } from 'src/app/services/storyblok.service';
@@ -14,7 +15,7 @@ import { StoryblokService } from 'src/app/services/storyblok.service';
 export class ButtonComponent {
   components: any;
   @Input() link: string;
-  @Input() _editable: string;
+  @Input() _editable: any;
   @Input() _uid: any;
   constructor(private storyblok: StoryblokService) { }
  
